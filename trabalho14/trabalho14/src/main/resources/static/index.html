@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Introdução ao Spring Boot</title>
+
+    <style>
+        body {
+            width: 40%;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            margin: 5px 0px;
+        }
+
+        button,
+        input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin: 5px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Testando API Restful</h1>
+    <div>
+        <label for="cep">CEP</label>
+        <input type="text" id="cep" name="cep">
+    </div>
+    <div>
+        <label for="rua">Rua</label>
+        <input type="text" id="rua" name="rua">
+    </div>
+    <div>
+        <label for="bairro">Bairro</label>
+        <input type="text" id="bairro" name="bairro">
+    </div>
+    <div>
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" name="cidade">
+    </div>
+
+    <button id="buscar">Buscar endereço pelo CEP (GET)</button>
+    <button id="criar">Criar novo (POST)</button>
+    <button id="apagar">Apagar pelo CEP (DELETE)</button>
+    <button id="listar">Listar todos os endereços</button>
+
+    <script>
+        async function buscaAddress() {
+            var cep = document.querySelector("#cep")
+            var bairro = document.querySelector("#bairro")
+            var cidade = document.querySelector("#cidade")
+            var rua = document.querySelector("#rua")
+
+            cep = cep.value
+            try {
+                let response = await fetch(`http://localhost:8080/address/${cep}`)
+                if (!response.ok) throw new Error(response.statusText)
+                var endereco = await response.json()
+
+                bairro.value = endereco['bairro']
+                rua.value = endereco['rua']
+                cidade.value = endereco['cidade']
+            } catch (e) {
+                console.error(e)
+                return
+            }
+        }
+
+        async function criaAddress() {
+            var cep = document.querySelector("#cep")
+            var bairro = document.querySelector("#bairro")
+            var cidade = document.querySelector("#cidade")
+            var rua = document.querySelector("#rua")
+
+            let dados = {
+                cep : cep.value,
+                bairro : bairro.value,
+                cidade : cidade.value,
+                rua : rua.value
+            }
+
+            const options = {
+                method: "POST",
+                body: JSON.stringify(dados),
+                headers: {'Content-Type': 'application/json'}
+            }
+
+            try {
+                let response = await fetch(`http://localhost:8080/address`, options)
+                if (!response.ok) throw new Error(response.statusText)
+
+            } catch (e) {
+                console.error(e)
+                return
+            }
+        }
+
+        async function apagaAddress() {
+            var cep = document.querySelector("#cep")
+
+            cep = cep.value
+            const options = {
+                method: "DELETE"
+            }
+
+            try {
+                let response = await fetch(`http://localhost:8080/address/${cep}`, options)
+                if (!response.ok) throw new Error(response.statusText)
+            } catch (e) {
+                console.error(e)
+                return
+            }
+        }
+
+        async function listaAddress() {
+            try {
+                let response = await fetch(`http://localhost:8080/address`)
+                if (!response.ok) throw new Error(response.statusText)
+                var enderecos = await response.json()
+
+                enderecos.forEach(endereco => {
+                    var divEndereco = document.createElement("div")
+                    
+                    var cep = document.createElement("p")
+                    cep.textContent = "CEP: " + endereco['cep']
+
+                    var rua = document.createElement("p")
+                    rua.textContent = "Rua: " + endereco['rua']
+
+                    var bairro = document.createElement("p")
+                    bairro.textContent = "Bairro: " + endereco['bairro']
+
+                    var cidade = document.createElement("p")
+                    cidade.textContent = "Cidade: " + endereco['cidade']
+
+                    var linha = document.createElement("hr")
+
+                    divEndereco.appendChild(cep)
+                    divEndereco.appendChild(rua)
+                    divEndereco.appendChild(bairro)
+                    divEndereco.appendChild(cidade)
+                    divEndereco.appendChild(linha)
+
+                    document.body.appendChild(divEndereco)
+                });
+
+            } catch (e) {
+                console.error(e)
+                return
+            }
+        }
+
+        window.onload = function () {
+            const btnBuscar = document.querySelector("#buscar")
+            const btnCriar = document.querySelector("#criar")
+            const btnApagar = document.querySelector("#apagar")
+            const btnListar = document.querySelector("#listar")
+
+            btnBuscar.onclick = buscaAddress
+            btnCriar.onclick = criaAddress
+            btnApagar.onclick = apagaAddress
+            btnListar.onclick = listaAddress
+        }
+
+
+    </script>
+</body>
+
+</html>

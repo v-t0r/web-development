@@ -1,0 +1,38 @@
+body {
+    background-color: rgb(109, 255, 160);
+    padding: 2% 0;
+    width: 60%;
+    margin: auto auto;
+    background-image: url("images/fundo.jpeg");
+    background-size: 500px 500px;
+}
+
+main {
+    background-color: white;
+    border-radius: 10px;
+    padding: 3%;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    box-shadow: 5px 5px 10px rgb(77, 76, 76);
+}
+
+p {
+    font-size: large;
+}
+
+a:link, a:visited {
+    color: rgb(182, 0, 136);
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: rgb(255, 0, 191);
+    text-decoration: none;
+}
+
+@media (max-width: 800px) {
+    body {
+        width: 95%;
+        margin: 0px auto;
+    }
+}
