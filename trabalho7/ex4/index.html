@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css">
+    <title>Trabahlo 7 - Exercicio 4</title>
+</head>
+
+<body>
+    <main>
+        <div id="centralized_window">
+            <p id="mensagemTela">Janela no centro da tela</p>
+            <button type="button" id="fechar" name="fechar">Ok</button>
+        </div>
+
+        <div>
+            <label for="mensagemInput">Mensagem:</label>
+            <p>
+                <textarea name="mensagemInput" id = "mensagemInput" rows="10" cols="40" placeholder="Escreva a mensagem aqui!"></textarea>
+            </p>
+        </div>
+
+        <button type="button" id="mostrar" name="mostrar">Mostrar janela</button>
+
+        <script>
+            const botaoMostrar = document.querySelector("#mostrar")
+            botaoMostrar.onclick = showMessage;
+            
+            function showMessage() {
+                const mensagemInput = document.querySelector("#mensagemInput")
+                const janela = document.querySelector("#centralized_window")
+                const mensagemTela = document.querySelector("#mensagemTela");
+
+                mensagemTela.textContent = mensagemInput.value
+                janela.style.visibility = 'visible'
+            }
+
+            const botaoFechar = document.querySelector("#fechar")
+            botaoFechar.onclick = function () {
+                const janela = document.querySelector("#centralized_window")
+                janela.style.visibility = 'hidden'
+            }
+        </script>
+
+
+    </main>
+</body>
+
+</html>

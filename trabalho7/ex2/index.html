@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercício JavaScript</title>
+</head>
+
+<body>
+    <input type="text" name="nome">
+    <button type="button">Digite seu nome e clique aqui</button>
+    <p></p>
+
+    <script>
+        const botao = document.querySelector("button");
+        botao.onclick = function () {
+            const campoNome = document.querySelector("input");
+            const parSaida = document.querySelector("p");
+            parSaida.textContent = 'Obrigado, ' + campoNome.value;
+
+        };
+    </script>
+</body>
+
+</html>

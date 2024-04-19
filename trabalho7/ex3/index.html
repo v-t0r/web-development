@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Peso ideal</title>
+</head>
+
+<body>
+    <main>
+        <div>
+            <label for="altura">Altura:</label>
+            <input type="number" id="altura" name="altura">
+        </div>
+
+        <div>
+            <label for="sexo">Sexo:</label>
+            <select name="sexo" id="sexo">
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+            </select>
+        </div>
+
+        <button type="button">Calcular</button>
+        <p></p>
+
+        <script>
+            const botao = document.querySelector("button")
+            botao.onclick = function () {
+                const altura = document.querySelector("input").value;
+                const selectSexo = document.querySelector("select")
+                const parSaida = document.querySelector("p");
+
+                let pesoIdeal
+                if(selectSexo.value == "masculino"){
+                    pesoIdeal = 52 + (0.75 * (parseInt(altura) - 152.4))
+                }else{
+                    pesoIdeal = 52 + (0.67 * (parseInt(altura) - 152.4))
+                }
+
+                parSaida.textContent = `O peso ideal de uma pessoa com ${altura} cm é: ${pesoIdeal}`
+
+            }
+        </script>
+    </main>
+</body>
+
+</html>

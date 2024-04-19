@@ -1,0 +1,62 @@
+header{
+    text-align: center;
+    background-color: rgb(87, 87, 87);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.5rem;
+    padding: 0.5rem;
+}
+
+main{
+    background-color: rgb(194, 194, 194);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0px auto;
+    gap: 1rem;
+    padding: 1rem 0px;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 250px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 350px;
+    background-color: white;
+    font-size: 1rem;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.titulo_img_desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.preco {
+    color: red;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        margin: 0px auto;
+    }
+    .card {
+        font-size: 0.7rem;
+        max-width: 250px;
+    }
+    .preco{
+        font-size: 1rem;
+    }
+}

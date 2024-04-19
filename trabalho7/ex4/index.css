@@ -1,0 +1,21 @@
+#centralized_window {
+    background-color: white;
+    min-width: 100px;
+    min-height: 100px;
+    padding:3%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px grey;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    visibility: hidden;
+    text-align: center;
+    align-content: center;
+}
+
+body{
+    background-color: aliceblue;
+    line-height: 2rem;
+}

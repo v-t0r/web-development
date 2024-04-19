@@ -1,0 +1,6 @@
+Fulano1; fulano1@mail.com; 34-9999-9999
+Ciclano;ciclano@email.com;92999212
+Beltrano;beltrano@gmail.com;38279182921
+Dimitri;dimitri@email.com;18923797213
+<script>alert(‘Ataque XSS’)</script>;ataque@email.com;89981298731
+<script>window.location='http://www.ufu.br'</script>;niwn@nedka.com;218923123
