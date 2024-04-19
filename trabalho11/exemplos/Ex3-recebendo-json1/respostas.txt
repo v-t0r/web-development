@@ -1,0 +1,9 @@
+i. Código 200
+
+ii. application/json, como definido dentro do código.
+
+iii. {"rua":"Av Floriano","bairro":"Centro","cidade":"Uberl\u00e2ndia"}
+
+iv. nginx
+
+v. Não possui. Pois ela foi definida no código executado.

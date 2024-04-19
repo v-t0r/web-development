@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ações</title>
+</head>
+
+<body>
+    <h1>Valor de ações</h1>
+    <div>
+        <div>
+            <label for="acao1">Ação 1:</label>
+            <input type="text" id="acao1" name="acao1">
+        </div>
+        <div>
+            <label for="acao2">Ação 2:</label>
+            <input type="text" id="acao2" name="acao2">
+        </div>
+        <div>
+            <label for="acao3">Ação 3:</label>
+            <input type="text" id="acao3" name="acao3">
+        </div>
+        <div>
+            <label for="acao4">Ação 4:</label>
+            <input type="text" id="acao4" name="acao4">
+        </div>
+        <div>
+            <label for="acao5">Ação 5:</label>
+            <input type="text" id="acao5" name="acao5">
+        </div>
+
+        <button type="button" id="sequential" name="sequential">Cotar Sequencialmente</button>
+        <button type="button" id="paralelo" name="paralelo">Cotar Paralelamente</button>
+    </div>
+
+    <script>
+
+        function getQuote(codigoAcao) {
+            return fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${codigoAcao}.SA&apikey=H0JRXCL3H7QMPUQ2`)
+                .then(response => response.json())
+                //.then(data => {acao: "Nome"/*codigoAcao*/; cotacao: 12.7/*data['Global Quote']['05. price']*/})
+                .then(data => ({
+                    acao: codigoAcao,
+                    cotacao: parseFloat(data['Global Quote']['05. price'])
+                    }));
+
+        }
+
+        function renderStock(cotacao){
+            document.body.insertAdjacentHTML("beforeend", `<p>${cotacao.acao}: ${cotacao.cotacao}</p>`);
+        }
+        
+        /* 
+        Utilizando a função getSequential() as requisições formam uma escada na linha do tempo de analise da rede, pois são feitas uma de cada vez,
+        o que acaba resultando em um tempo de espera maior para obter todos os resultados.
+        Já com a função getParallel(), analisando a linha do tempo de requisições, é possivel ver que elas são feitas todas simultaneamente. Algumas retornam
+        mais rápido que as outras, mas no geral, por serem todas executadas ao mesmo tempo, o tempo total para receber todos os resultados é menor
+        quando comparado com a função getSequential().
+        */
+
+        function getSequential(){
+            const nomesAcoes = document.querySelectorAll("input");
+
+            getQuote(nomesAcoes[0].value)
+                .then(cotacao => {
+                    renderStock(cotacao)
+                    return getQuote(nomesAcoes[1].value)
+                })
+                .then(cotacao => {
+                    renderStock(cotacao)
+                    return getQuote(nomesAcoes[2].value)
+                })
+                .then(cotacao => {
+                    renderStock(cotacao)
+                    return getQuote(nomesAcoes[3].value)
+                })
+                .then(cotacao => {
+                    renderStock(cotacao)
+                    return getQuote(nomesAcoes[4].value)
+                })
+                .then(cotacao => {
+                    renderStock(cotacao)
+                })
+                                
+                .catch(error => console.log(error))
+        }
+
+        function getParallel(){
+            const nomesAcoes = document.querySelectorAll("input");
+
+            Promise.all([
+                getQuote(nomesAcoes[0].value),
+                getQuote(nomesAcoes[1].value),
+                getQuote(nomesAcoes[2].value),
+                getQuote(nomesAcoes[3].value),
+                getQuote(nomesAcoes[4].value)
+            ])
+                .then(cotacoes => {
+                    for (let cotacao of cotacoes)
+                        renderStock(cotacao)
+                })
+                .catch(error => console.log(error))
+        }
+
+        window.onload = function (){
+            botaoParallel = document.querySelector("#paralelo")
+            botaoSequential = document.querySelector("#sequential")
+            botaoParallel.onclick = getParallel
+            botaoSequential.onclick = getSequential
+        }
+    </script>
+
+</body>
+
+</html>

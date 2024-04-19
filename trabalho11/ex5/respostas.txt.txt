@@ -1,0 +1,3 @@
+A diferença entre este exemplo e o do exercio 4 é que este envia o Request codificado como um JSON,
+contendo o cep, email e uma chave. Quando o JSON chega no arquivo PHP ele é decodificado. O restante
+funciona da mesma forma.

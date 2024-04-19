@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <h1>Cadastro de Contatos</h1>
+    <form action="cadastro.php" method="post">
+
+        <div>
+            <label for="name">Nome:</label>
+            <input type="text" name="name" id="name">
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+        </div>
+
+        <div>
+            <label for="message">Mensagem:</label>
+            <input type="text" name="message" id="message">
+        </div>
+
+        <button>Cadastrar</button>
+
+    </form>
+
+    <a href="listaContatos.php">Listar contatos</a>
+</body>
+
+</html>

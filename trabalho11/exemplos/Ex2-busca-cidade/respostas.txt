@@ -1,0 +1,35 @@
+a)
+i. Código 200.
+ii. text/html; charset=UTF-8. Não há content length, pois o tamanho varia.
+iii. Uberlândia
+iv. nginx
+v. Não, pois foi utilizado o tipo padrão, que é text.
+
+b)
+i. Código 404.
+ii. text/html; charset=UTF-8. Não há content length, pois o tamanho varia.
+iii. 38400-500 is not available
+iv. nginx
+v. Não, pois foi utilizado o tipo padrão, que é text.
+
+c)
+Código de status retornado: 500 Internal Server Error
+Conteúdo Retornado: Nada
+
+d)
+Código de status retornado: 200
+Conteúdo do corpo da resposta HTTP:
+<br/>
+<b>Parse error</b>
+:  syntax error, unexpected token &quot;echo &quot;in <b>/home/vol3_3/infinityfree.com/if0_34738851/htdocs/trabalho11/ex1/Ex2-busca-cidade/busca-cidade.php</b>
+on line <b>11</b>
+<br/>
+
+Esta configuração é útil quando se está progamando o site, pois permite entender melhor
+o erro que aconteceu. Ela jamais deve ser utilizada quando o site está disponível para
+o público, pois ela revela os erros que o sistema possui.
+
+
+
+
+

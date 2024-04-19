@@ -1,0 +1,13 @@
+Não, o formulário não foi enviado de forma tradicional, pois não ouve redirecionamento de página. Ele foi enviado de forma assincrona utilizando requisições.
+
+Funcionamneto geral:
+O site já possui no formulário a mensagem de erro, mas ela inicia de forma oculta.
+Assim que a página é carregada, uma função é definida para ser chamada quando o formulário for
+submetido. Esta função, chamada sendForm(), envia uma requisiçao com o formulario preenchido, e 
+em caso de sucesso na resposta, verifica se o login foi bem sucedido. Em caso positivo, o 
+usuário é redirecionado para o endereço retornado do request, e em caso negativo, a mensagem de erro se torna visível para o usuário.
+A função também trata possíveis erros com a requisição.
+
+No arquivo php, os dados são verificados e o resultado é colocado em uma classe chamada ResquestResponse, 
+que contém uma variável que responde se o login foi bem sucedido e outra que guarda o endereço do
+redirecionamento para quando o login está correto.

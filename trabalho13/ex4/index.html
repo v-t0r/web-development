@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rolagem Infinita</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #dedede;
+      font-family: Helvetica;
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 3rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #888;
+    }
+
+    .item {
+      background-color: white;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .item-image {
+      width: 150px;
+      height: 150px;
+      margin: 0 2rem;
+    }
+
+    .item-name {
+      font: 2em Verdana;
+      color: #888;
+    }
+
+    .item-price {
+      font: 2em Verdana;
+      color: darkgreen;
+      margin-left: 2rem;
+    }
+
+    .item-price::before {
+      content: 'R$ ';
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id="products">
+    <h2>Nossos produtos</h2>
+
+    <template id="template">
+      <div class="item">
+        <img class="item-image" src="images/{{prod-image}}"></img>
+        <span class="item-name">{{prod-name}}</span>
+        <span class="item-price">{{prod-price}}</span>
+      </div>
+    </template>
+
+  </section>
+
+  <script>
+
+    function renderProducts(newProducts) {
+
+      const prodsSection = document.getElementById("products"); //pega a seção de produtos
+      const template = document.getElementById("template"); //pega o template de um produto
+
+      for (let product of newProducts) { //para cada novo produto recebido
+        let html = template.innerHTML //cria um template preenchido com os dados recebidos
+          .replace("{{prod-image}}", product.imagePath)
+          .replace("{{prod-name}}", product.name)
+          .replace("{{prod-price}}", product.price);
+
+        prodsSection.insertAdjacentHTML("beforeend", html); //adiciona ele no final da seçao de produtos
+      };
+    }
+
+    async function loadProducts() { 
+      
+      try {
+        let response = await fetch("more-products.php"); //chama more-products.php de forma assincrona e recebe um promise
+        if (!response.ok) throw new Error(response.statusText); //se a promise foi cumprida
+        var products = await response.json(); // converte o que foi recebido para o formato json
+      }
+      catch (e) {
+        console.error(e); //trata possiveis erros
+        return;
+      }
+
+      renderProducts(products); //chama a função que rederiza os produtos na página, passando os novos produtos como parâmetro
+    }
+
+    window.onload = function () {
+      loadProducts(); //ao carregar a página, chama a função loadProducts() que insere uma leva de produtos na página
+    }
+
+    window.onscroll = function () {
+      //quando chega no final da página, chama a função loadProducts() que insere uma nova leva de produtos na página
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        loadProducts();
+      }
+    };
+
+  </script>
+
+</body>
+
+</html>
