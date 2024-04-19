@@ -1,0 +1,36 @@
+main {
+    width: 50%;
+    text-align: start;
+}
+
+.form-control, .form-select{
+    border: 1px solid black;
+}
+
+.form-control:focus, .form-select:focus{
+    border: 2px solid rgb(146, 81, 200);
+    box-shadow: 0px 0px 5px rgb(146, 81, 200);
+    outline: none;
+    background: #fff;
+}
+
+.btn-primary{
+    background-color: rgb(146, 81, 200);
+}
+
+.btn-primary:hover{
+    background-color: rgb(122, 69, 165);
+}
+
+/* Adaptações para dispositivos móveis -----------------------------------------------------------------------*/
+@media (max-width: 1500px) {
+    main{
+        width: 70%; 
+    }
+}
+
+@media (max-width: 550px) {
+    main{
+        width: 90%; 
+    }
+}

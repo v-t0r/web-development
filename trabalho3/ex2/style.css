@@ -1,0 +1,131 @@
+body {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1% 0;
+    background-color: rgb(222, 222, 222);
+    
+}
+
+header {
+    background-color: rgb(46, 83, 174);
+    padding: 1%;
+    border-radius: 5px 5px 0px 0px;
+}
+
+nav {
+    background-color: white;
+    font-size: larger;
+    border-color:rgb(46, 83, 174);
+    border-style: solid none;
+    border-width: 5px;
+}
+
+main {
+    background-color: white;
+    padding: 3%;
+    color: #444;
+    font-family: 'Helvetica Neue', sans-serif;                                                             
+    line-height: 1.5;
+}
+
+footer {
+    background-color: rgb(47, 49, 79);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1%;
+}
+
+/* utilizando seletor de id */
+#pageTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 36px;
+    font-variant:small-caps;
+    color: white;
+    
+}
+
+/* utilizando seletor de classe */
+.horizontalList {
+    justify-content: left;
+    margin: 1px -40px;
+}
+
+/* utilizadno seletor de filho */
+.horizontalList > li {
+    display: inline-block; 
+    text-align: center;
+    background-color: rgb(46, 83, 174);
+    padding: 1%;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+/* utilizando seletor de descendente */
+ main h2 {
+    color: rgb(6, 0, 94);
+}
+
+/* utilizando seletor de irmão adjacente */
+h2 + table{
+    border: 5px rgb(6, 0, 94) solid;
+    padding-top: 5px;
+    margin: 0px auto;
+
+}
+
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(179, 199, 252);
+    text-decoration: none;
+}
+
+a:active {
+    color: rgb(37, 48, 78);
+    text-decoration: none;
+}
+
+/* utilizado pseudo-classe :is */
+:is(main,nav) p {
+    color: black;
+}
+
+/*utilizando pseudo-classe :has */
+main:has(img){
+    background-color: rgb(235, 233, 233);
+}
+
+/*utilizando pseudo-classe:first-child */
+li:first-child{
+   color: blue;
+}
+
+/* utilizando pseudo-classe :first-of-type */
+p:first-of-type{
+    font-size: 18px;
+}
+
+div, button {
+    margin-top: 5px
+}
+
+input:invalid + span::after {
+    content: '✖';
+    color: red;
+}
+
+input:valid + span::after {
+    content: '✓';
+    color: limegreen;
+}
+
+input:focus {
+    border: 1px solid rgb(89, 156, 201);
+    outline: none;
+}
+
+

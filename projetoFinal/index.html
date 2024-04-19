@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="AnúnciosAnúnicos - O melhor para comprar e vender de tudo!">
+    <title>Anúncios&Anúncios</title>
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="images/logo-branco.png" alt="logo da Anuncios&Anuncios">
+        <h1>Anúncios&Anúncios</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="meusAnuncios.php">Perfil</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="area_busca_completa">
+            <div class="area_busca">
+                <input type="text" id="busca" name="busca" placeholder="Buscar produtos...">
+                <button id="buscar">Buscar</button>
+            </div>
+            <div class="area_avancada">
+                <div class="busca_categoria">
+                    <div>
+                        <label for="onde_buscar">Buscar em:</label>
+                        <select id="onde_buscar" name="onde_buscar">
+                            <option value="Titulo" selected>Titulo</option>
+                            <option value="Descricao">Descricao</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="categoria">Categoria:</label>
+                        <select id="categoria" name="categoria">
+                            <option value="0" selected>Todas</option>
+                            <option value="1">Veículo</option>
+                            <option value="2">Eletroeletrônico</option>
+                            <option value="3">Imóvel</option>
+                            <option value="4">Vestuário</option>
+                            <option value="5">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="precos">
+                    <div>
+                        <label for="preco_min">Preço min:</label>
+                        <input id="preco_min" name="preco_min"  pattern="\d+(\.\d{2})?" placeholder="Ex: 1.99">
+                    </div>
+                    <div>
+                        <label for="preco_max">Preço max:</label>
+                        <input id="preco_max" name="preco_max"  pattern="\d+(\.\d{2})?" placeholder="Ex: 199.99">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "container" id="area_resultados">
+            
+        </div>
+    </main>
+    <footer>
+        <p>Anúncios&Anúncios - Todos os direitos reservados - 2023</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
